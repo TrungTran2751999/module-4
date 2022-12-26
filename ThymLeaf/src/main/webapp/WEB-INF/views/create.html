@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<head th:insert="/layout::head"></head>
+    <form id="form" th:action="@{/save}" th:object="${customer}" method="post">
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}">
+            <label>Email</label>
+            <input type="text" th:field="*{email}">
+            <input type="submit" value="Save"/>
+        </div>
+    </form>
+<footer th:insert="/layout::footer"></footer>
+</body>
+</html>
