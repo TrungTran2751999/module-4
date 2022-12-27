@@ -1,7 +1,9 @@
 package com.example.service;
 
 import com.example.model.Product;
+import org.springframework.ui.Model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ProductService implements IProductService {
@@ -40,5 +42,17 @@ public class ProductService implements IProductService {
     @Override
     public void setInit(boolean init) {
         ProductService.init = init;
+    }
+
+    @Override
+    public HashMap<Integer, Product> findProductByName(String name) {
+        HashMap<Integer, Product> productList = new HashMap<>();
+        Object[] list = listProduct.keySet().toArray();
+        for(int i=0; i<list.length; i++){
+            if(listProduct.get(list[i]).getName().equals(name)){
+                productList.put(listProduct.get(list[i]).getId(), listProduct.get(list[i]));
+            }
+        }
+        return productList;
     }
 }

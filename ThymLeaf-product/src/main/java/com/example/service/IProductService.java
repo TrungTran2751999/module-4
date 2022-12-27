@@ -12,4 +12,5 @@ public interface IProductService {
     void updateProduct(int id, Product product);
     boolean getInit();
     void setInit(boolean init);
+    HashMap<Integer, Product> findProductByName(String name);
 }
