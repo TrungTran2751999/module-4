@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="form" th:method="post" th:action="@{/save}" th:object="${setting}" enctype="multipart/form-data">
+    <div>
+        <label>Language: </label>
+        <select th:field="*{language}">
+            <option value="Tieng ziet">Tieng Ziet</option>
+            <option value="Tieng alien">Tieng Alien</option>
+            <option value="Tieng meow">Tieng Meow</option>
+        </select>
+    </div>
+    <div>
+        <label>Page size:</label>
+        Show
+        <select th:field="*{pageSize}">
+            <option th:value=25>25</option>
+            <option th:value=50>50</option>
+            <option th:value=100>100</option>
+        </select>
+        email per page
+    </div>
+    <div>
+        <label>Spam filter</label>
+        <input type="checkbox" th:field="*{spamFilter}">
+        Enable spam filter
+    </div>
+    <div>
+        <label>Signature: </label>
+        <textarea th:field="*{signature}"></textarea>
+    </div>
+    <input type="submit" value="Save">
+</form>
+<div th:insert="/layout::footer"></div>
+</body>
+</html>
