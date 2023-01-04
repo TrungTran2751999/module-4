@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="/layout::head"></head>>
+<body>
+<div class="container col-8 offset-2">
+    <form method="post" action="/province/create-province" th:object="${province}" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Name</label>
+            <input class="form-control"  placeholder="Enter name" th:field="*{name}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>

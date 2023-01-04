@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="/layout::head"></head>
+<body>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer:${customers}">
+            <th scope="row" th:text="${customer.id}"></th>
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.email}"></td>
+            <td th:if="${customer.province}" th:text="${customer.province.name}"></td>
+            <td th:unless="${customer.province}"></td>
+            <td>
+                <a th:href="@{/{id}/delete(id=${customer.id})}">Delete</a>
+                <a th:href="@{/{id}/update(id=${customer.id})}">Update</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/create-customer">Create</a>
+</body>
+</html>

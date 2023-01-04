@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+ <html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="/layout::head"></head>>
+<body>
+    <div class="container col-8 offset-2">
+        <form method="post" action="/create-customer" th:object="${customer}" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control"  placeholder="Enter name" th:field="*{name}">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" placeholder="Enter email" th:field="*{email}">
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <select class="form-select" th:field="*{province}">
+                    <option th:each="province:${provinces}"
+                            th:value="${province.getId()}"
+                            th:text="${province.getName()}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

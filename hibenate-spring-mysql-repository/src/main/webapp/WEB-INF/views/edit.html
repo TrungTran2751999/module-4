@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="/layout::head"></head>>
+<body>
+<div class="container col-8 offset-2">
+    <form method="post" th:action="@{'/edit'}" th:object="${customer}" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" placeholder="Enter name" th:field="*{name}">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" placeholder="Enter email" th:field="*{email}">
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <select th:field="*{province}">
+                <option th:each="provincee:${provinces}"
+                        th:value="${provincee.id}"
+                        th:text="${provincee.name}"
+                        th:class="${customer.get().province.getId()==provincee.id?'selected':''}">
+                </option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<script>
+    let selected = document.querySelectorAll("option");
+    for(let i=0; i<selected.length; i++){
+        if(selected[i].classList.contains("selected")){
+            selected[i].selected = true;
+        }
+    }
+</script>
+</body>
+</html>

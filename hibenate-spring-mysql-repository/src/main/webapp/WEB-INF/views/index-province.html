@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="/layout::head"></head>
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="province:${provinces}">
+        <th scope="row" th:text="${province.id}"></th>
+        <td th:text="${province.name}"></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/province/create-province">Create</a>
+</body>
+</html>
